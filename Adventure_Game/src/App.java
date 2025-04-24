@@ -16,18 +16,19 @@ public class App {
     // instanciating objects
     // creates the window that displays when debugging
     JFrame window;
+
     // idk
     Container con;
 
     // creates the panels that are used to contain lables
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel;
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
 
     // labels that are used to display text for the time being
     JLabel titleNameLabel;
     Font titleFont = new Font("Consolas", Font.PLAIN, 48);
 
     // allows for a button to be created that can be interacted by the user
-    JButton startButton;
+    JButton startButton, choice1, choice2, choice3, choice4;
     Font startButtonFont = new Font("Consolas", Font.PLAIN, 32);
 
     // allows for an area of text to display and sets its font attributes
@@ -46,7 +47,7 @@ public class App {
     public App() {
         // creates a new JFrame object called window
         // this allows for an actual window to display on a monitor
-        window = new JFrame();
+        window = new JFrame("Blackjack & Hookers");
         // Sets the resolution of the window
         window.setSize(800, 600);
         // allows for the window to be properly closed
@@ -106,6 +107,9 @@ public class App {
     // method that creates a game screen that will display text and information for the end user
     public void createGameScreen(){
 
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+
         // this will create another panel that will contain text like the previous panels have done
         // sets bound's X/Y position and width/length as well as its background color to blue
         mainTextPanel = new JPanel();
@@ -115,15 +119,57 @@ public class App {
 
         // sets multiple attribute for mainTextArea such as its bounds, back/fore grounds, font,
         // and line wrapping so that the text does not go out of bounds
-        mainTextArea = new JTextArea();
+        mainTextArea = new JTextArea("good game gg no re");
         mainTextArea.setBounds(100, 100, 600, 250);
-        mainTextArea.setBackground(Color.blue);
+        mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(textAreaFont);
         // setLineWrap allows for the text to remain in set bound
         mainTextArea.setLineWrap(true);
+        // disallows the uesr from editing text on screen
+        mainTextArea.setEditable(false);
+        // makes the text withing bound to wrap inside the bound
+        // mainTextArea.setWrapStyleWord(true); // doesn't feel like it does anything
         mainTextPanel.add(mainTextArea);
+
+        //
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250, 350, 300, 150);
+        choiceButtonPanel.setBackground(Color.blue);
+        con.add(choiceButtonPanel);
+
+        //
+        choice1 = new JButton();
+        choice1.setBackground(Color.black);
+        choice1.setForeground(Color.white);
+        choice1.setFont(textAreaFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton();
+        choice2.setBackground(Color.black);
+        choice2.setForeground(Color.white);
+        choice2.setFont(textAreaFont);
+        choiceButtonPanel.add(choice1);
+
+        choice3 = new JButton();
+        choice3.setBackground(Color.black);
+        choice3.setForeground(Color.white);
+        choice3.setFont(textAreaFont);
+        choiceButtonPanel.add(choice1);
+
+        choice4 = new JButton();
+        choice4.setBackground(Color.black);
+        choice4.setForeground(Color.white);
+        choice4.setFont(textAreaFont);
+        choiceButtonPanel.add(choice1);
     }
 
+    // class that will hold scripts for interactive buttons that progress the game
+    public class TitleScreenHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+
+            createGameScreen();
+        }
+    }
 
 }
