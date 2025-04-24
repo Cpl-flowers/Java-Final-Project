@@ -1,9 +1,8 @@
-// imports color for setBackground
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.*;
-// import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,6 +44,7 @@ public class App {
 
     // An Object Called App
     public App() {
+
         // creates a new JFrame object called window
         // this allows for an actual window to display on a monitor
         window = new JFrame("Blackjack & Hookers");
@@ -61,8 +61,6 @@ public class App {
         // Container con is a object it is capable of holding interactive objects such as a button
         // or static objects like strings of texts
         con = window.getContentPane();
-        
-
 
         // this allows for a title card to be made
         // setbounds is what allows for the placement and size setting of the title card
@@ -79,8 +77,6 @@ public class App {
         titleNamePanel.add(titleNameLabel);
         // sets the font for the titleNameLabel
         titleNameLabel.setFont(titleFont);
-
-
 
         // this stores an oject in startButtonPanel
         // sets bounds, text, font, and font size
@@ -104,6 +100,15 @@ public class App {
 
     }
 
+    public JButton ChoiceButton(String x){
+        JButton button;
+        button = new JButton(x);
+        button.setBackground(Color.black);
+        button.setForeground(Color.white);
+        button.setFont(textAreaFont);
+        return button;
+    }
+
     // method that creates a game screen that will display text and information for the end user
     public void createGameScreen(){
 
@@ -114,7 +119,7 @@ public class App {
         // sets bound's X/Y position and width/length as well as its background color to blue
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(100, 100, 600, 250);
-        mainTextPanel.setBackground(Color.blue);
+        mainTextPanel.setBackground(Color.black);
         con.add(mainTextPanel);
 
         // sets multiple attribute for mainTextArea such as its bounds, back/fore grounds, font,
@@ -132,37 +137,30 @@ public class App {
         // mainTextArea.setWrapStyleWord(true); // doesn't feel like it does anything
         mainTextPanel.add(mainTextArea);
 
-        //
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(250, 350, 300, 150);
-        choiceButtonPanel.setBackground(Color.blue);
+        choiceButtonPanel.setBackground(Color.black);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
 
-        //
-        choice1 = new JButton();
+        choice1 = ChoiceButton("choice 1");
+        choiceButtonPanel.add(choice1);
+        choice2 = ChoiceButton("choice 2");
+        choiceButtonPanel.add(choice2);
+        choice3 = ChoiceButton("choice 3");
+        choiceButtonPanel.add(choice3);
+        choice4 = ChoiceButton("choice 4");
+        choiceButtonPanel.add(choice4);
+
+        /* obsolete code
+        choice1 = new JButton("choice1");
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.white);
         choice1.setFont(textAreaFont);
         choiceButtonPanel.add(choice1);
-
-        choice2 = new JButton();
-        choice2.setBackground(Color.black);
-        choice2.setForeground(Color.white);
-        choice2.setFont(textAreaFont);
-        choiceButtonPanel.add(choice1);
-
-        choice3 = new JButton();
-        choice3.setBackground(Color.black);
-        choice3.setForeground(Color.white);
-        choice3.setFont(textAreaFont);
-        choiceButtonPanel.add(choice1);
-
-        choice4 = new JButton();
-        choice4.setBackground(Color.black);
-        choice4.setForeground(Color.white);
-        choice4.setFont(textAreaFont);
-        choiceButtonPanel.add(choice1);
+        */
     }
+
 
     // class that will hold scripts for interactive buttons that progress the game
     public class TitleScreenHandler implements ActionListener{
