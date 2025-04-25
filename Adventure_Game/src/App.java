@@ -20,10 +20,10 @@ public class App {
     Container con;
 
     // creates the panels that are used to contain lables
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
 
     // labels that are used to display text for the time being
-    JLabel titleNameLabel;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelNumber;
     Font titleFont = new Font("Consolas", Font.PLAIN, 48);
 
     // allows for a button to be created that can be interacted by the user
@@ -36,6 +36,9 @@ public class App {
 
     // creates the title screen handler
     TitleScreenHandler tsHandler = new TitleScreenHandler();
+
+    int playerHP;
+    String playerWeapon;
 
     // main method
     public static void main(String[] args) throws Exception {
@@ -98,6 +101,9 @@ public class App {
         // When a user clicks the Start button will recognize the click based on the TitleScreenHandler method
         startButton.addActionListener(tsHandler);
 
+        ////////////////
+        // End of App //
+        ////////////////
     }
 
     public JButton ChoiceButton(String x){
@@ -137,12 +143,14 @@ public class App {
         // mainTextArea.setWrapStyleWord(true); // doesn't feel like it does anything
         mainTextPanel.add(mainTextArea);
 
+        // Formats the layout of the buttons in play screen
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(250, 350, 300, 150);
         choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
 
+        // instanciates the buttons for user choices
         choice1 = ChoiceButton("choice 1");
         choiceButtonPanel.add(choice1);
         choice2 = ChoiceButton("choice 2");
@@ -152,14 +160,53 @@ public class App {
         choice4 = ChoiceButton("choice 4");
         choiceButtonPanel.add(choice4);
 
-        /* obsolete code
-        choice1 = new JButton("choice1");
-        choice1.setBackground(Color.black);
-        choice1.setForeground(Color.white);
-        choice1.setFont(textAreaFont);
-        choiceButtonPanel.add(choice1);
-        */
+        // creates a panel that is able to contain improtant info on the player stats
+        playerPanel = new JPanel();
+        playerPanel.setBounds(100, 15, 600, 50);
+        playerPanel.setBackground(Color.blue);
+        playerPanel.setLayout(new GridLayout(1, 4));
+        con.add(playerPanel);
+
+        // contains the health stat header
+        hpLabel = new JLabel("HP: ");
+        hpLabel.setFont(textAreaFont);
+        hpLabel.setForeground(Color.white);
+        playerPanel.add(hpLabel);
+
+        // contains the health stat counter
+        hpLabelNumber = new JLabel();
+        hpLabelNumber.setFont(textAreaFont);
+        hpLabelNumber.setForeground(Color.white);
+        playerPanel.add(hpLabelNumber);
+
+        // contains the weapon stat header
+        weaponLabel = new JLabel("Weapon: ");
+        weaponLabel.setFont(textAreaFont);
+        weaponLabel.setForeground(Color.white);
+        playerPanel.add(weaponLabel);
+
+        // contains the weapon's type stat
+        weaponLabelNumber = new JLabel();
+        weaponLabelNumber.setFont(textAreaFont);
+        weaponLabelNumber.setForeground(Color.white);
+        playerPanel.add(weaponLabelNumber);
+
+        playerSetup();
+        /////////////////////////////
+        // End of createGameScreen //
+        /////////////////////////////
+
     }
+
+    public void playerSetup() {
+        playerHP = 15;
+        playerWeapon = "Knife";
+    
+        hpLabelNumber.setText(Integer.toString(playerHP));
+        weaponLabelNumber.setText(playerWeapon);
+
+    }
+    
 
 
     // class that will hold scripts for interactive buttons that progress the game
