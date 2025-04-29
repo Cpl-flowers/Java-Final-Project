@@ -50,66 +50,7 @@ public class App {
         new App();
     }
 
-    // An Object Called App
-    public App() {
 
-        // creates a new JFrame object called window
-        // this allows for an actual window to display on a monitor
-        // window.setSize the resolution of the window
-        // window.setDefaultCloseOperation allows for the window to be properly closed
-        // window.getContentPane sets the background of the window color to black
-        // window.setLayout disables the default layout of the JFrame window
-        // window.setVisible Allows for the window to be visible
-        window = new JFrame("Blackjack & Hookers");
-        window.setSize(800, 600);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.black);
-        window.setLayout(null);
-        window.setVisible(true);
-
-        // Container con is a object it is capable of holding interactive objects such as a button
-        // or static objects like strings of texts
-        con = window.getContentPane();
-
-        // this allows for a title card to be made
-        // setbounds is what allows for the placement and size setting of the title card
-        titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(100, 100, 600, 150); 
-        titleNamePanel.setBackground(Color.black);
-        con.add(titleNamePanel);
-
-        // allows for a label to be made and customized
-        // titleNameLable.setForeground sets the color of the text to white
-        // titleNamePanel.add allows the text from titleNameLable to be added on top of titleNamePanel
-        // titleNameLable.setFont sets the font for the titleNameLabel
-        titleNameLabel = new JLabel("Adventure");
-        titleNameLabel.setForeground(Color.white);
-        titleNamePanel.add(titleNameLabel);
-        titleNameLabel.setFont(titleFont);
-
-        // this stores an oject in startButtonPanel
-        // sets bounds, text, font, and font size
-        startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300, 400, 200, 100);
-        startButtonPanel.setBackground(Color.black);
-        con.add(startButtonPanel);
-
-        // this creates the button that can be interacted with
-        // JButton has one parameter that can be inputted with a string
-        // startButton.add adds the button to the panel container startButtonPanel
-        // When a user clicks the Start button will recognize the click based on the TitleScreenHandler method
-        startButton = new JButton("Start");
-        startButton.setBackground(Color.black);
-        startButton.setForeground(Color.white);
-        startButtonPanel.add(startButton);
-        startButton.setFont(startButtonFont);
-        startButton.addActionListener(tsHandler);
-        startButton.setFocusPainted(false);
-
-        ////////////////
-        // End of App //
-        ////////////////
-    }
 
     // method that creates a game screen that will display text and information for the end user
     public void createGameScreen(){
@@ -374,8 +315,8 @@ public class App {
 
         monsterHP -= playerDamage;
         
-        // monsterdamage = new java.util.Random().nextInt(3);
-        // playerHP -= monsterdamage;
+        monsterdamage = new java.util.Random().nextInt(3);
+        playerHP -= monsterdamage;
         goblin.attack();
         hpLabel.setText("HP: " + playerHP);
 
