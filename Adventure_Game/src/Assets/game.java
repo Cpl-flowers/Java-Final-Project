@@ -1,20 +1,20 @@
 package Assets;
-
 import java.awt.event.*;
 
 public class game {
 
-    
-    choiceHandler ChoiceHandler = new choiceHandler();
-    String nextPos1, nextPos2, nextPos3, nextPos4;
+    choiceHandler cHandler = new choiceHandler();
+    UI ui = new UI();
+    visibilityManager vm = new visibilityManager(ui);
+
 
     public static void main(String[] args) {
+    
         new game();
     }
 
     public game() {
         ui.createUI(cHandler);
-        story.defaultSetup();
         vm.showTitleScreen();
 
     }
@@ -25,7 +25,11 @@ public class game {
 
             String yourChoice = event.getActionCommand();
             switch (yourChoice) {
-                case "start": vm.titleToTown(); story.townGate(); break;
+                case "start": break;
+                case "c1": break;
+                case "c2": break;
+                case "c3": break;
+                case "c4": break;
             }
         }
     }

@@ -1,5 +1,5 @@
 package Assets;
 
-public class story {
-    
+public class story extends game{
+
 }
