@@ -1,15 +1,14 @@
+import assets.*;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JButton;
-
-import Assets.*;
 
 // Class called App
 public class App {
@@ -376,7 +375,8 @@ public class App {
         
         // monsterdamage = new java.util.Random().nextInt(3);
         // playerHP -= monsterdamage;
-        goblin.attack();
+        Goblin gob = new Goblin();
+        playerHP  -= gob.attack();
         hpLabel.setText("HP: " + playerHP);
 
         if (monsterHP < 1) {
