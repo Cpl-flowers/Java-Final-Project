@@ -1,10 +1,11 @@
 package assets;
 
 public abstract class Entity {
-    int health;
-    String name;
-    int attack;
-    int defense;
+    public int health;
+    public String name;
+    public int attack;
+    public int defense;
+    public static int entityID;
 
     // methods
 
@@ -20,7 +21,7 @@ public abstract class Entity {
     public void setDefense(int x) {
         defense = x;
     }
-    public int attack(){
+    public int attack(int x, int y){
         return 0;
     }
 }

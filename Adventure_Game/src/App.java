@@ -371,12 +371,14 @@ public class App {
             playerDamage = new java.util.Random().nextInt(9);
         }
 
+        // this is the player attacking the goblin
         monsterHP -= playerDamage;
-        
+
+        // this is the goblin attacking the player
         // monsterdamage = new java.util.Random().nextInt(3);
         // playerHP -= monsterdamage;
         Goblin gob = new Goblin();
-        playerHP  -= gob.attack();
+        playerHP  = gob.attack(3, playerHP);
         hpLabel.setText("HP: " + playerHP);
 
         if (monsterHP < 1) {
